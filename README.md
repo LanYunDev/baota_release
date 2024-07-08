@@ -44,6 +44,21 @@ curl -L https://github.com/weiwang3056/baota_release/blob/main/LinuxPanel/LinuxP
 ```
 解压对应的降级包，运行panel文件夹中的update.sh脚本即可
 
+离线升级步骤：
+1、下载离线升级包
+2、将升级包上传到服务器中的/root目录
+3、解压文件：unzip LinuxPanel-*
+4、切换到升级包目录： cd panel
+5、执行升级脚本：bash update.sh
+6、删除升级包：cd .. && rm -f LinuxPanel-*.zip && rm -rf panel
+
+建议安装后可执行如下命令避免官方搞小动作：
+echo '127.0.0.1 bt.cn' >>/etc/hosts
+
+移除 7.4.5 强制绑定提醒指令：
+cp /www/server/panel/data/bind.pl /www/server/panel/data/bind.pl.bak
+rm -f /www/server/panel/data/bind.pl
+
 # 注意事项
 
 * 宝塔降级后会出现密码不正确的情况，修改密码即可（bt 5）
